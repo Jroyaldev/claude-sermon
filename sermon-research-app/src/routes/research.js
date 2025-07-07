@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const AcademicSearchService = require('../services/academicSearch');
 
 const router = express.Router();
@@ -97,6 +98,23 @@ router.get('/crossref/:query', async (req, res) => {
   } catch (error) {
     console.error('CrossRef route error:', error);
     res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Fetch PDF through server to avoid CORS issues
+router.get('/fetch-pdf', async (req, res) => {
+  const { url } = req.query;
+  if (!url) {
+    return res.status(400).json({ error: 'PDF url is required' });
+  }
+
+  try {
+    const response = await axios.get(url, { responseType: 'arraybuffer' });
+    res.set('Content-Type', 'application/pdf');
+    res.send(response.data);
+  } catch (error) {
+    console.error('PDF fetch error:', error.message);
+    res.status(500).json({ error: 'Failed to fetch PDF' });
   }
 });
 
