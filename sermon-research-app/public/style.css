@@ -1,0 +1,630 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.nav-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 15px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #666;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button:hover {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.tab-button.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+    background-color: #fff;
+}
+
+.tab-content {
+    display: none;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.search-section h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.search-types {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.search-type {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.search-type h3 {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.search-form input,
+.search-form select {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.search-form button {
+    padding: 10px 20px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+}
+
+.search-form button:hover {
+    background: #5a67d8;
+}
+
+.btn-smart {
+    background: #38a169 !important;
+    margin-left: 10px;
+}
+
+.btn-smart:hover {
+    background: #2f855a !important;
+}
+
+.search-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 10px 0;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.search-options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.search-options input[type="checkbox"] {
+    margin: 0;
+}
+
+.results-section {
+    margin-top: 30px;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.results-stats {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.paper-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.paper-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.paper-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.paper-authors {
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.paper-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.paper-abstract {
+    margin-bottom: 15px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.paper-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.access-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.access-badge.open {
+    background: #c6f6d5;
+    color: #22543d;
+}
+
+.access-badge.subscription {
+    background: #fed7d7;
+    color: #742a2a;
+}
+
+.analysis-section {
+    padding: 20px;
+}
+
+.analysis-tools {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.analysis-type {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.analysis-type h3 {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.analysis-type p {
+    margin-bottom: 15px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.analysis-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.analysis-form input,
+.analysis-form select,
+.analysis-form textarea {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.analysis-form textarea {
+    width: 100%;
+    resize: vertical;
+}
+
+.analysis-results {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.analysis-results h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.analysis-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.claude-analysis {
+    background: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 0 5px 5px 0;
+}
+
+.claude-analysis h4 {
+    color: #1976d2;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.claude-analysis-content {
+    color: #333;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.btn-small {
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-select {
+    background: #28a745;
+    color: white;
+}
+
+.btn-select:hover {
+    background: #218838;
+}
+
+.btn-link {
+    background: #17a2b8;
+    color: white;
+}
+
+.btn-link:hover {
+    background: #138496;
+}
+
+.sermon-section {
+    padding: 20px;
+}
+
+.sermon-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #5a67d8;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.sermon-form {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.sermon-form input,
+.sermon-form textarea,
+.sermon-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.sermon-form textarea {
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.sermon-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sermon-card h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.sermon-meta {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.citation-section {
+    padding: 20px;
+}
+
+.citation-tools {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.citation-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.citation-form h3 {
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+
+.citation-form select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.citation-form button {
+    padding: 8px 16px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.citation-form button:hover {
+    background: #5a67d8;
+}
+
+.selected-papers {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.selected-papers h3 {
+    margin-bottom: 15px;
+}
+
+.selected-paper {
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selected-paper-info {
+    flex: 1;
+}
+
+.selected-paper-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.selected-paper-authors {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.btn-remove {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.btn-remove:hover {
+    background: #c82333;
+}
+
+.citation-results {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.citation-results h3 {
+    margin-bottom: 15px;
+}
+
+.citation-item {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #f5c6cb;
+    margin-bottom: 20px;
+}
+
+.success {
+    background: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #c3e6cb;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .search-form {
+        flex-direction: column;
+    }
+    
+    .search-form input,
+    .search-form select {
+        min-width: 100%;
+    }
+    
+    .sermon-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .citation-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .citation-form h3 {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

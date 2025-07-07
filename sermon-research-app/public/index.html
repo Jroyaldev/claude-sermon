@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sermon Research App</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-book-open"></i> Sermon Research App</h1>
+            <p>Academic-level research for post-evangelic narrative critical study</p>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="tab-button active" onclick="showTab('research')">
+                <i class="fas fa-search"></i> Research
+            </button>
+            <button class="tab-button" onclick="showTab('analysis')">
+                <i class="fas fa-brain"></i> Analysis
+            </button>
+            <button class="tab-button" onclick="showTab('sermons')">
+                <i class="fas fa-file-text"></i> Sermons
+            </button>
+            <button class="tab-button" onclick="showTab('citations')">
+                <i class="fas fa-quote-left"></i> Citations
+            </button>
+        </nav>
+
+        <div id="research" class="tab-content active">
+            <div class="search-section">
+                <h2>Academic Research</h2>
+                
+                <div class="search-types">
+                    <div class="search-type">
+                        <h3>General Search</h3>
+                        <div class="search-form">
+                            <input type="text" id="generalQuery" placeholder="Enter search terms...">
+                            <div class="search-options">
+                                <label><input type="checkbox" id="openAccessOnly"> Open Access Only</label>
+                                <label><input type="checkbox" id="includeArXiv" checked> Include arXiv</label>
+                                <label><input type="checkbox" id="includeSemanticScholar" checked> Semantic Scholar</label>
+                                <label><input type="checkbox" id="includeCrossRef" checked> CrossRef</label>
+                                <label><input type="checkbox" id="analyzeWithClaude"> Analyze with Claude</label>
+                            </div>
+                            <button onclick="performGeneralSearch()">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                            <button onclick="performSmartSearch()" class="btn-smart">
+                                <i class="fas fa-brain"></i> Smart Search
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="search-type">
+                        <h3>Biblical Terms Search</h3>
+                        <div class="search-form">
+                            <input type="text" id="biblicalTerms" placeholder="Enter biblical terms (comma separated)...">
+                            <input type="text" id="biblicalContext" placeholder="Additional context...">
+                            <button onclick="performBiblicalSearch()">
+                                <i class="fas fa-book"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="search-type">
+                        <h3>Scripture Reference Search</h3>
+                        <div class="search-form">
+                            <input type="text" id="scriptureRef" placeholder="e.g., John 3:16, Matthew 5:1-12">
+                            <select id="analysisType">
+                                <option value="narrative-critical">Narrative Critical</option>
+                                <option value="historical-critical">Historical Critical</option>
+                                <option value="literary-critical">Literary Critical</option>
+                                <option value="rhetorical-critical">Rhetorical Critical</option>
+                            </select>
+                            <button onclick="performScriptureSearch()">
+                                <i class="fas fa-cross"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="searchResults" class="results-section"></div>
+            </div>
+        </div>
+
+        <div id="analysis" class="tab-content">
+            <div class="analysis-section">
+                <h2>Claude-Powered Analysis</h2>
+                
+                <div class="analysis-tools">
+                    <div class="analysis-type">
+                        <h3>Abstract Analysis</h3>
+                        <p>Analyze selected papers for theological themes and sermon insights</p>
+                        <button onclick="analyzeSelectedPapers()" class="btn-primary">
+                            <i class="fas fa-microscope"></i> Analyze Selected Papers
+                        </button>
+                    </div>
+                    
+                    <div class="analysis-type">
+                        <h3>Scripture Analysis</h3>
+                        <div class="analysis-form">
+                            <input type="text" id="scriptureAnalysisRef" placeholder="e.g., John 3:16, Romans 8:28">
+                            <select id="scriptureAnalysisType">
+                                <option value="narrative-critical">Narrative Critical</option>
+                                <option value="historical-critical">Historical Critical</option>
+                                <option value="literary-critical">Literary Critical</option>
+                                <option value="rhetorical-critical">Rhetorical Critical</option>
+                            </select>
+                            <button onclick="analyzeScripture()" class="btn-primary">
+                                <i class="fas fa-cross"></i> Analyze Scripture
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-type">
+                        <h3>Sermon Outline Generation</h3>
+                        <div class="analysis-form">
+                            <input type="text" id="outlineScripture" placeholder="Scripture reference">
+                            <input type="text" id="outlineTheme" placeholder="Sermon theme (optional)">
+                            <textarea id="outlineResearch" placeholder="Research summary or key findings" rows="3"></textarea>
+                            <button onclick="generateSermonOutline()" class="btn-primary">
+                                <i class="fas fa-list-alt"></i> Generate Outline
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="analysisResults" class="analysis-results"></div>
+            </div>
+        </div>
+
+        <div id="sermons" class="tab-content">
+            <div class="sermon-section">
+                <div class="sermon-header">
+                    <h2>Sermon Management</h2>
+                    <button class="btn-primary" onclick="showSermonForm()">
+                        <i class="fas fa-plus"></i> New Sermon
+                    </button>
+                </div>
+                
+                <div id="sermonForm" class="sermon-form hidden">
+                    <h3>Create New Sermon</h3>
+                    <form onsubmit="saveSermon(event)">
+                        <input type="text" id="sermonTitle" placeholder="Sermon Title" required>
+                        <input type="text" id="sermonScripture" placeholder="Scripture Reference" required>
+                        <input type="text" id="sermonTheme" placeholder="Theme">
+                        <textarea id="sermonOutline" placeholder="Outline" rows="5"></textarea>
+                        <textarea id="sermonNotes" placeholder="Research Notes" rows="8"></textarea>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-save"></i> Save Sermon
+                            </button>
+                            <button type="button" class="btn-secondary" onclick="hideSermonForm()">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div id="sermonList" class="sermon-list"></div>
+            </div>
+        </div>
+
+        <div id="citations" class="tab-content">
+            <div class="citation-section">
+                <h2>Citation Management</h2>
+                
+                <div class="citation-tools">
+                    <div class="citation-form">
+                        <h3>Format Citations</h3>
+                        <select id="citationStyle">
+                            <option value="APA">APA</option>
+                            <option value="MLA">MLA</option>
+                            <option value="Chicago">Chicago</option>
+                            <option value="Turabian">Turabian</option>
+                            <option value="SBL">SBL (Society of Biblical Literature)</option>
+                        </select>
+                        <button onclick="formatSelectedCitations()">
+                            <i class="fas fa-quote-left"></i> Format Citations
+                        </button>
+                        <button onclick="generateBibliography()">
+                            <i class="fas fa-list"></i> Generate Bibliography
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="selectedPapers" class="selected-papers">
+                    <h3>Selected Papers</h3>
+                    <div id="papersList"></div>
+                </div>
+                
+                <div id="citationResults" class="citation-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
