@@ -69,6 +69,7 @@ npm start
 2. Enter your search terms in the General Search field
 3. Review results from multiple academic databases
 4. Select papers to add to your citation library
+5. Use the **Open Access** toggle to show only freely available papers
 
 ### Biblical Terms Search
 1. Use the Biblical Terms Search for theological concepts
@@ -100,6 +101,7 @@ npm start
 - `POST /api/research/scripture-search` - Scripture reference search
 - `GET /api/research/semantic-scholar/:query` - Direct Semantic Scholar search
 - `GET /api/research/crossref/:query` - Direct CrossRef search
+- `GET /api/research/fetch-pdf?url=` - Proxy to retrieve open access PDFs
 
 ### Sermon Routes
 - `POST /api/sermons` - Create new sermon

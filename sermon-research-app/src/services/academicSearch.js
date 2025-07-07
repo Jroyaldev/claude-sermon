@@ -108,7 +108,8 @@ class AcademicSearchService {
         venue: paper.venue,
         source: 'Semantic Scholar',
         doi: paper.externalIds?.DOI || null,
-        openAccess: paper.openAccessPdf !== null || paper.isOpenAccess
+        openAccess: paper.openAccessPdf !== null || paper.isOpenAccess,
+        openAccessPdf: paper.openAccessPdf?.url || null
       })),
       source: 'semantic-scholar',
       total: data.total
